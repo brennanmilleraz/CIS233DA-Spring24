@@ -9,7 +9,7 @@ main {
     height: 80vh;
     text-align: center;
     color:#255332;
-    background-image: url(bg1.jpg);
+    background-image: url(assets/images/bg1.jpg);
     background-position: center;
     background-size: cover;
 
