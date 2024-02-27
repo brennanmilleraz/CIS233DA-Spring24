@@ -6,6 +6,9 @@ body {
     /* overflow: hidden; */
 }
 main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 80vh;
     text-align: center;
     color:#255332;
@@ -18,30 +21,34 @@ main {
     height: 20vh;
     display: grid;
     grid-template-columns: repeat(4, 25vw);
-    background-color: white;
+    background-color: rgb(30, 30, 30);
 }
 #links {
     grid-column: span 3;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 #links a {
-    color: black;
+    color: white;
     text-decoration: none;
-    position: relative;
-    top: 50%;
     margin: 0 1em;
 }
 #images {
     grid-column: span 1;
     height: 20vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .logo {
-    width: 100%;
-    /* height: 20vh; */
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+
 }
 .container {
     height: 20vh;
@@ -49,7 +56,6 @@ main {
 }
 .logo_only{
     width: 40%;
-    transform: translateY(-30%);
 }
 ul {
     display: flex;
@@ -59,4 +65,33 @@ ul {
     align-items: center;
     padding: 0;
     list-style-type: none;
+}
+
+/* calendar styles */
+monthHdr {
+    grid-column: span 7;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+    background-color: lightgrey;
+    padding: 20px;
+    
+}
+spacer1 {
+    grid-column: span 4;
+}
+spacer2 {
+    grid-column: span 2;
+}
+day{
+    background-color: grey;
+    border-radius: 4px;
+    height: 80px;
+    margin: 5px;
+    text-align: right;
+    padding: 5px;
 }
