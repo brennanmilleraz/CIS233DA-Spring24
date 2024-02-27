@@ -73,11 +73,13 @@ monthHdr {
     text-align: center;
     font-weight: bold;
     font-size: larger;
+    color: white;
+    padding: 20px;
 }
 calendar {
     display: grid;
-    grid-template-columns: repeat(7, 50px);
-    background-color: lightgrey;
+    grid-template-columns: repeat(7, 70px);
+    background-color: transparent;
     padding: 20px;
     
 }
@@ -87,11 +89,16 @@ spacer1 {
 spacer2 {
     grid-column: span 2;
 }
-day{
-    background-color: grey;
+spacer1, spacer2, monthHdr {
+    background-color: rgba(102, 0, 255, 75%);
     border-radius: 4px;
-    height: 80px;
     margin: 5px;
-    text-align: right;
+}
+day{
+    background-color: white;
+    border-radius: 4px;
+    height: 50px;
+    margin: 5px;
+    text-align: left;
     padding: 5px;
 }
