@@ -35,6 +35,11 @@ main {
     color: white;
     text-decoration: none;
     margin: 0 1em;
+    font-family: "carlmarx", sans-serif;
+    font-size:x-large;
+}
+#links a:hover {
+    text-decoration: underline;
 }
 #images {
     grid-column: span 1;
