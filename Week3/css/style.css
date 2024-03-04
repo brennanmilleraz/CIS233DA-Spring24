@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    /* overflow: hidden; */
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    color:#255332;
+    background-image: url(../images/bg480.png);
+    background-position: center;
+    background-size: cover;
+
+}
+.grid {
+    height: 20vh;
+    display: grid;
+    grid-template-columns: repeat(4, 25vw);
+    background-color: rgb(30, 30, 30);
+}
+#links {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1em;
+    font-family: "carlmarx", sans-serif;
+    font-size:x-large;
+}
+#links a:hover {
+    text-decoration: underline;
+}
+#images {
+    grid-column: span 1;
+    height: 20vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+
+}
+.container {
+    height: 20vh;
+    overflow: hidden;
+}
+.logo_only{
+    width: 40%;
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* calendar styles */
+monthHdr {
+    grid-column: span 7;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    color: white;
+    padding: 20px;
+}
+calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 70px);
+    background-color: transparent;
+    padding: 20px;
+    
+}
+spacer1 {
+    grid-column: span 4;
+}
+spacer2 {
+    grid-column: span 2;
+}
+spacer1, spacer2, monthHdr {
+    background-color: rgba(102, 0, 255, 75%);
+    border-radius: 4px;
+    margin: 5px;
+}
+day{
+    background-color: white;
+    border-radius: 4px;
+    height: 50px;
+    margin: 5px;
+    text-align: left;
+    padding: 5px;
+}
+@media (min-width: 1000px) {
+    main {
+        background-image: url(../images/bg960.png);
+    }
+}
+@media (min-width: 2000px) {
+    main {
+        background-image: url(../images/bg1920.png);
+    }
+}

@@ -4,31 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="Brennan Miller">
+    <meta description="Flex/Grid Coding Homework">
+    <meta keywords="HTML, CSS, Flex, Grid">
     <title>Flex/Grid Coding Homework</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/wxn3vpx.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <main>
-        <img src="assets/images/logo_text.png" alt="Penguin Nation" class="logo_only">
+        <img src="images/logo_text.png" alt="Outreach Observitory Logo" class="logo_only">
     </main>
     <footer>
         <div class="grid">
             <div id="links">
-                <div><a href="https://www.scottsdalecc.edu/college-police" title="College Police" >College&nbsp;Police</a></div>
-                <div><a href="https://www.scottsdalecc.edu/disclosures" title="Disclosures">Disclosures</a></div>
-                <div><a href="https://www.scottsdalecc.edu/human-resources" title="Jobs">Jobs</a></div>
+                <div><a href="index.html" title="Home" role="navigation">Home</a></div>
+                <div><a href="calendar.html" title="Calendar" role="navigation">Calendar</a></div>
+                <div><a href="video.html" title="Calendar" role="navigation">Video</a></div>
+                <div><a href="audio.html" title="Calendar" role="navigation">Audio</a></div>
             </div>
-            <div id="images">
-                <img src="./assets/images/logo_small.png" 
-                srcset="
-                ./assets/images/logo_small.png 500w,
-                ./assets/images/logo_medium.png 1000w,
-                ./assets/images/logo_large.png 2000w"
-                
-                class="logo"
-                alt="penguin logo" class="logo"
-                />
-            </div>
+            <picture id="images">
+                <source media="(min-width: 1000px)" srcset="images/logo300.png">
+                <source media="(min-width:2000px)" srcset="images/logo600">
+                <img src="images/logo150.png" alt="Outreach Observitory Logo" class="logo">
+            </picture>
         </div>
     </footer>
 </body>
