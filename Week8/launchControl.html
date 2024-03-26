@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img id="dash" src="./assets/images/dash.PNG" alt="A sports car dashboard" />
+    <img id="gas" src="./assets/images/gas0.png" alt="The gas gauge" />
+    <img id="batt" src="./assets/images/batt0.PNG" alt="The battery gauge" />
+    <img id="brake" src="./assets/images/p1.PNG" alt="parking brake indicator" />
+    <img id="trac" src="./assets/images/trac0.PNG" alt="traction control indicator" />
+    <img id="launch" src="./assets/images/lca0.PNG" alt="launch control indicator" />
+    <div id="mode">PARK</div>
+    <div id="temp">98 F&deg;</div>
+    <div id="time"></div>
+    <img src="./assets/images/bttn_park_1.PNG" id="bttn_park" alt="parking brake button" onclick="engageBrake()">
+    <img src="./assets/images/bttn_trac_1.PNG" id="bttn_trac" alt="traction control button" onclick="engageTrac()">
+    <img src="./assets/images/bttn_batt_0.PNG" id="bttn_batt" alt="charge battery button" onclick="getCharge()">
+    <img src="./assets/images/bttn_gas_0.PNG" id="bttn_gas" alt="fill gas button" onclick="getGas()">
+    <img src="./assets/images/shifter.png" id="bttn_shifter" alt="moade shifter">
+    <img src="./assets/images/start.PNG" id="bttn_start" alt="start button">
+    <div id="msg"></div>
+</body>
+<script src="./assets/scripts/clock.js"></script>
+<script src="./assets/scripts/functions.js"></script>
+</html>
+
+
