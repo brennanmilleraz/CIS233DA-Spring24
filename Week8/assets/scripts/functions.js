@@ -1,7 +1,6 @@
-let gasLevel = 0;
-let chargeLevel = 0;
-let tracLevel = 1;
-let brakeLevel = 1;
+let gasLevel = 0, chargeLevel = 0, tracLevel = 1, brakeLevel = 1, intStatus = 0;
+const modeInd = document.getElementById('mode')
+const shifter = document.getElementById('bttn_shifter')
 
 
 showtime();
@@ -53,5 +52,30 @@ function engageBrake() {
         brakeLevel = 1;
         document.getElementById('brake').src = './assets/images/p1.png';
         document.getElementById('bttn_park').src = './assets/images/bttn_park_1.png';
+    }
+}
+
+function setMode() {
+    switch(intStatus) {
+        case 0:
+            intStatus = 1;
+            modeInd.innerText = 'ECO PRO';
+            shifter.style.top = '720px';
+            break;
+        case 1:
+            intStatus = 2;
+            modeInd.innerText = 'SPORT';
+            shifter.style.top = '740px';
+            break;
+        case 2:
+            intStatus = 3;
+            modeInd.innerText = 'COMFORT';
+            shifter.style.top = '760px';
+            break;
+        default:
+            intStatus = 0;
+            modeInd.innerText = 'PARK';
+            shifter.style.top = '700px';
+            break;
     }
 }
