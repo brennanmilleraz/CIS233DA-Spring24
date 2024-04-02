@@ -8,8 +8,13 @@ function startEngine() {
         if(chargeLevel == 1) {
             if(tracLevel == 0) {
                 if(brakeLevel == 0) {
+                    if(intStatus == 1) {
                     errMsg.innerText = ''
                     launch.play();
+                    } else {
+                        errMsg.innerText = 'Set the transmition to SPORT!'
+                        sputter.play();
+                    }
                 } else {
                     errMsg.innerText = 'Hey dummy your parking brake!'
                     sputter.play();
