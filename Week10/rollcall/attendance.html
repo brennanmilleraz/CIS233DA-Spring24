@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Attendance</title>
+</head>
+<body>
+    <nav><ul id="nav"></ul></nav>
+    <main>
+        <h1>Attendance Tracker</h1>
+        <div id="itemWrapper">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <select id="semesterList" style="width:100%"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="classList" style="width:95%"> </select>
+                    </td>
+                    <td style="text-align: right;">
+                        <input type="date" id="classDate" style="width:95%;">
+                    </td>
+                </tr>
+            </table>
+            <div id="itemList">
+                <table id="studentList"></table>
+            </div>
+            <div>
+                <p id="strURL"></p>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="./assets/data/array.js"></script>
+<script src="./assets/data/jscript.js"></script>
+<script>
+
+    getMenu();
+
+</script>
+</html>

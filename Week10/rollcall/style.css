@@ -1,0 +1,82 @@
+* {
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+ }
+
+ nav {
+    width: 420px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    height: 17px;
+}
+
+ nav ul { 
+    list-style-type: none; 
+    padding-left: 1em;
+    border: 14px single black;
+}
+
+nav a { 
+    text-decoration: none; 
+}
+
+nav li {
+    display: inline;
+    padding: 2px 4px;
+    margin: 0px 6px;
+    border-radius: 4px 4px 0px 0px;
+}
+
+nav .active {
+    background-color: blue;
+}
+
+nav .inactive {
+    background-color: lightgray;
+}
+
+nav .active a {
+    color: white;
+}
+
+main {
+    padding: 10px;
+}
+
+h1 {
+    font-size: large;
+    margin-top: 0;
+    padding-left: 3px;
+}
+
+table {
+    width: 100%;
+}
+ 
+#itemWrapper {
+    width: 400px;
+    height: 150px;
+ }
+
+#itemList {
+    height: 116px;
+    overflow-y: auto;
+    border: 1px solid gray;
+}
+
+#itemList tr:nth-of-type(even){
+    background-color: lightblue;
+}
+
+#studentList td:nth-child(2) {
+    text-align: center;
+}
+
+select option:nth-of-type(even) {
+    background-color: lightblue;
+}
+
+select option {
+    padding: 3px;
+}

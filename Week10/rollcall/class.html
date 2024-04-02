@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Class</title>
+</head>
+<body>
+    <nav><ul id="nav"></ul></nav>
+    <main>
+        <h1>Class Maintenance</h1>
+        <div id="itemWrapper">
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <select id="semesterList" style="width:100%" onchange="getClass(this)"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <select id="classList" multiple style="width:100%"> </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input 
+                            type="text" 
+                            id = "className"
+                            placeholder="Class Name"
+                            style="width:130px;"
+                        >
+                    </td>
+                    <td>
+                        <input 
+                            type="text" 
+                            id="sectionNumber"
+                            placeholder="Section Number"
+                            style="width:130px;"
+                        >
+                    </td>
+                    <td>
+                        <button>Delete</button>
+                        <button>Add</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+</body>
+<script src="./assets/data/array.js"></script>
+<script src="./assets/data/jscript.js"></script>
+<script>
+
+    getMenu();
+    getSemester();
+
+</script>
+</html>

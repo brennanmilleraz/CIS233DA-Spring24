@@ -8,7 +8,7 @@ function startEngine() {
         if(chargeLevel == 1) {
             if(tracLevel == 0) {
                 if(brakeLevel == 0) {
-                    if(intStatus == 1) {
+                    if(intStatus == 2) {
                     errMsg.innerText = ''
                     launch.play();
                     } else {
