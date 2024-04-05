@@ -44,13 +44,41 @@ function getSemester(){
 
 function getClass(obj) {
     var semesterID = obj.options[obj.selectedIndex].value;
-    const aryClass = `ary${semesterID}`;
+    const aryClass = eval(`ary${semesterID}`);
     const classList = document.getElementById('classList');
 
     let classListOptions = '';
     for(i=0;i<aryClass.length;i++) {
-        classListOptions += `<option value="${i}">${aryClass[i][1]}</option>`;
+        classListOptions += `<option value="${aryClass[i][0]}">${aryClass[i][1]}</option>`;
     }
     classList.innerHTML = classListOptions;
+}
 
+function getStudents(obj) {
+    var classID = obj.options[obj.selectedIndex].value;
+    const aryStudents = eval(`ary${classID}`);
+    const studentList = document.getElementById('studentList');
+
+    let studentListOptions = '';
+    for(i=0;i<aryStudents.length;i++) {
+        studentListOptions += `<option value="${aryStudents[i][0]}">${aryStudents[i][1]}</option>`;
+    }
+    studentList.innerHTML = studentListOptions;
+}
+
+function addStudent() {
+    var meid = document.getElementById('meid').value;
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    if(meid != '' && firstName != '' && lastName != '') {
+        var option = document.createElement("option");
+        option.value = meid;
+        option.innerText = `${lastName}, ${firstName}`;
+        document.getElementById("studentList").appendChild(option);
+    }
+}
+
+function removeStudent() {
+    var studentList = document.getElementById('studentList');
+    studentList.options[studentList.selectedIndex].remove();
 }

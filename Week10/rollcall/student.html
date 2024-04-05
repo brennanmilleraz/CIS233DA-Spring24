@@ -15,12 +15,12 @@
             <table>
                 <tr>
                     <td colspan="5">
-                        <select id="semesterList" style="width:100%"></select>
+                        <select id="semesterList" style="width:100%" onchange="getClass(this)"></select>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="5">
-                        <select id="classList" style="width:100%"></select>
+                        <select id="classList" style="width:100%" onchange="getStudents(this)"></select>
                     </td>
                 </tr>
                 <tr>
@@ -54,8 +54,8 @@
                         >
                     </td>
                     <td style="text-align: right;">
-                        <button>Delete</button>
-                        <button>Add</button>
+                        <button onclick="removeStudent()">Delete</button>
+                        <button onclick="addStudent()">Add</button>
                     </td>
                 </tr>
             </table>
@@ -67,6 +67,7 @@
 <script>
 
     getMenu();
+    getSemester();
 
 </script>
 </html>
