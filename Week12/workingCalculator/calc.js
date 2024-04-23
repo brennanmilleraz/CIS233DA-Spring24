@@ -17,9 +17,9 @@ function reset() {
 }
 function clearScreen() {
     var screen = document.getElementById("screen");
-    if (screen.value =! '' && equalsLastInput == false) {
+    if (screen.value != '' && equalsLastInput == false) {
         var result = document.getElementById("screen");
-        result.value = null;
+        result.value = '';
         canType = true;
         percentage = false;
         decimal = false;
@@ -101,14 +101,17 @@ function calculate() {
             storedValue /= currentValue;
             break;
     }
-    // screen.value = storedValue;
     storedOperator = null;
     percentage = false;
+    negative = false;
 }
 function equals() {
     calculate();
     var screen = document.getElementById("screen");
     screen.value = storedValue;
+    if(storedValue < 0) {
+        negative = true
+    }
     canType = false;
     equalsLastInput = true;
 }
