@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Current Weather</title>
+</head>
+<body>
+<h1>Current Weather</h1>
+<label for="city">Enter a city name:</label>
+<input type="text" id="city" />
+<button onclick="getWeather()">Get Weather</button>
+<div id="weather"></div>
+<script>
+    function getWeather() {
+        // const apiKey = '93d4b4bc76667161034ee4f4bb5dace7';
+        const apiKey = '459129b59b511dd68b563f2bd58a15f1';
+        const city = document.getElementById('city').value;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+        const weather = document.getElementById('weather');
+        const description = data.weather[0].description;
+        const temperature = data.main.temp;
+        const humidity = data.main.humidity;
+        const windSpeed = data.wind.speed;
+        weather.innerHTML = `
+            <p>Current weather in ${city}: ${description}</p>
+            <p>Temperature: ${temperature} &deg;F</p>
+            <p>Humidity: ${humidity}%</p>
+            <p>Wind speed: ${windSpeed} m/s</p>
+        `;
+    })
+    .catch(error => {
+    const weather = document.getElementById('weather');
+    weather.innerHTML = '<p>Error getting weather data</p>';
+    console.error(error);
+    });
+    }
+</script>
+</body>
+</html>
