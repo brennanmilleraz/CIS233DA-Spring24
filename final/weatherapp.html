@@ -3,11 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weatherapp</title>
+    <title>Weather App</title>
+    <script src="//unpkg.com/d3-dsv"></script>
+    <script src="//unpkg.com/index-array-by"></script>
+    <script src="//unpkg.com/globe.gl"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <main>
-        
+      <div class="selectContainer">
+        <select id="citySelect" onchange="changeCity(this)">
+          <option value="Phoenix">Phoenix</option>
+          <option value="NYC">NYC</option>
+          <option value="Dubai">Dubai</option>
+          <option value="London">London</option>
+          <option value="Tokyo">Tokyo</option>
+        </select>
+        <button type="button" onclick="goToCity()">Go Here!</button>
+      </div>
+      <div id="leftContainer" class="weatherContainer">
+        <p>Phoenix, Arizona</p>
+        <h1>80&deg; F</h1>
+        <img src="assets/icons/rainy-1.svg" alt="">
+      </div>
+      <div id="rightContainer" class="imgContainer">
+        <img src="assets/images/exe.jpg" alt="">
+        <img src="assets/images/exe.jpg" alt="">
+        <img src="assets/images/exe.jpg" alt="">
+        <img src="assets/images/exe.jpg" alt="">
+        <img src="assets/images/exe.jpg" alt="">
+      </div>
+      <div id="globeViz"></div>
     </main>
+
+    <script src="assets/js/globe.js"></script>
 </body>
 </html>
