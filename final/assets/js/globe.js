@@ -1,9 +1,12 @@
+//function to go to the midpoint between two cities
 function changeCity(citySelect) {
+    city = citySelect.value;
+
     document.getElementById("leftContainer").classList.remove("leftShow");
     document.getElementById("rightContainer").classList.remove("rightShow");
-    city = citySelect.value;
+
     if(city == currentCity){
-        goToCity(city);
+        goToCity();
         return;
     }
     povCoords = getMidPoint(currentCity, city);
@@ -13,7 +16,8 @@ function changeCity(citySelect) {
         .arcsData([{startLat: CITY_COORDINATES[currentCity].lat, startLng: CITY_COORDINATES[currentCity].lng, endLat: CITY_COORDINATES[city].lat, endLng: CITY_COORDINATES[city].lng}])
         .pointOfView(povCoords, 4000);
 }
-  
+
+//function to get the midpoint coordinates between two cities
 function getMidPoint(city1, city2){
     var lat1 = CITY_COORDINATES[city1].lat;
     var lon1 = CITY_COORDINATES[city1].lng;
@@ -40,6 +44,8 @@ function getMidPoint(city1, city2){
       altitude: 2
     }
 }
+
+//functions to convert degrees to radians and vice versa
 function toRadians(degrees) {
     return degrees * Math.PI / 180;
 }
@@ -47,16 +53,97 @@ function toDegrees(radians) {
     return radians * 180 / Math.PI;
 }
 
+//function to go to city and pull weather data
 function goToCity(){
+    city = document.getElementById("citySelect").value;
+    getWeather(city);
+    getImages(city);
+
     document.getElementById("leftContainer").classList.add("leftShow");
     document.getElementById("rightContainer").classList.add("rightShow");
 
-    city = document.getElementById("citySelect").value;
+
     currentCity = city;
     myGlobe
         .pointOfView(CITY_COORDINATES[city], 4000)
         .arcsData([]);
 }
+
+//function to get weather data from openweathermap api
+function getWeather(city){
+    const apiKey = "459129b59b511dd68b563f2bd58a15f1";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        document.getElementById("cityName").innerText = data.name;
+        document.getElementById("temp").innerText = data.main.temp + "°F";
+        document.getElementById("weather").innerText = data.weather[0].description;
+        document.getElementById("maxMin").innerText = "Max: " + data.main.temp_max + "°F" + " Min: " + data.main.temp_min + "°F";
+        document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
+        document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " mph";
+
+        icon = document.getElementById("icon");
+
+        switch(data.weather[0].icon){
+            case "01d":
+                icon.src = "assets/icons/day.svg"
+                break;
+            case "01n":
+                icon.src = "assets/icons/night.svg"
+                break;
+            case "02d":
+                icon.src = "assets/icons/cloudy-day-3.svg"
+                break;
+            case "02n":
+                icon.src = "assets/icons/cloudy-night-3.svg"
+                break;
+            case "03d": case "03n": case "04d": case "04n": case "50d": case "50n":
+                icon.src = "assets/icons/cloudy.svg"
+                break;
+            case "09d": case "09n": case "10n":
+                icon.src = "assets/icons/rainy-6.svg"
+                break;
+            case "10d":
+                icon.src = "assets/icons/rainy-3.svg"
+                break;
+            case "11d": case "11n":
+                icon.src = "assets/icons/thunder.svg"
+                break;
+            case "13d":
+                icon.src = "assets/icons/snowy-3.svg"
+                break;
+            case "13n":
+                icon.src = "assets/icons/snowy-5.svg"
+                break;
+        }
+    })
+}
+//function to set images for each city
+function getImages(city){
+    var skyline = document.getElementById("skyline");
+    var food = document.getElementById("food");
+    var landmark = document.getElementById("landmark");
+    var history = document.getElementById("history");
+    var environment = document.getElementById("environment");
+
+    city = city.toLowerCase();
+
+    skyline.src = `assets/images/${city}Skyline.jpg`;
+    food.src = `assets/images/${city}Food.jpg`;
+    landmark.src = `assets/images/${city}Landmark.jpg`;
+    history.src = `assets/images/${city}History.jpg`;
+    environment.src = `assets/images/${city}Environment.jpg`;
+}
+
+//function that goes to phoinix after 2 seconds
+const delay = ms => new Promise(res => setTimeout(res, ms));
+const startPos = async () => {
+    await delay(2000);
+    goToCity();
+};
 
 const CITY_COORDINATES = {
     "Phoenix":{"lat": 33.45, "lng": -112, "altitude": 1},
@@ -80,4 +167,5 @@ const myGlobe = Globe()
     .pointRadius(0.1)
     .pointsData([CITY_COORDINATES["Phoenix"], CITY_COORDINATES["NYC"], CITY_COORDINATES["Dubai"], CITY_COORDINATES["London"], CITY_COORDINATES["Tokyo"]])
     .pointsMerge(true)
-    .pointOfView(CITY_COORDINATES["Phoenix"], 4000);
+
+startPos();
