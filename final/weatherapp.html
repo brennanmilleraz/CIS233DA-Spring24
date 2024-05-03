@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <script src="//unpkg.com/d3-dsv"></script>
-    <script src="//unpkg.com/index-array-by"></script>
-    <script src="//unpkg.com/globe.gl"></script>
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <script src="//unpkg.com/d3-dsv"></script>
+  <script src="//unpkg.com/index-array-by"></script>
+  <script src="//unpkg.com/globe.gl"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <main>
-      <div class="selectContainer">
-        <select id="citySelect" onchange="changeCity(this)">
-          <option value="Phoenix">Phoenix</option>
-          <option value="NYC">NYC</option>
-          <option value="Dubai">Dubai</option>
-          <option value="London">London</option>
-          <option value="Tokyo">Tokyo</option>
-        </select>
-        <button type="button" onclick="goToCity()">Go Here!</button>
-      </div>
-      <div id="leftContainer" class="weatherContainer">
-        <p id="cityName"></p>
-        <h1 id="temp"></h1>
-        <img id="icon" src="assets/icons/rainy-1.svg" alt="">
-        <div class="data">
-          <p id="weather"></p>
-          <p id="max"></p>
-          <p id="min"></p>
-          <p id="humidity"></p>
-          <p id="wind"></p>
-        </div>
-      </div>
-      <div id="rightContainer" class="imgContainer">
-        <img id="skyline" src="assets/images/exe.jpg" alt="">
-        <img id="landmark" src="assets/images/exe.jpg" alt="">
-        <img id="food" src="assets/images/exe.jpg" alt="">
-        <img id="environment" src="assets/images/exe.jpg" alt="">
-        <img id="history" src="assets/images/exe.jpg" alt="">
-      </div>
-      <div id="globeViz"></div>
-    </main>
+<main>
+<div class="selectContainer">
+  <select id="citySelect" onchange="changeCity(this)">
+    <option value="Phoenix">Phoenix</option>
+    <option value="New York City">New York City</option>
+    <option value="Dubai">Dubai</option>
+    <option value="London">London</option>
+    <option value="Tokyo">Tokyo</option>
+  </select>
+  <button type="button" onclick="goToCity()">Go Here!</button>
+</div>
+<div id="globeViz"></div>
+<div id="leftContainer" class="weatherContainer">
+  <p id="cityName"></p>
+  <h1 id="temp"></h1>
+  <img id="icon" src="assets/icons/rainy-1.svg" alt="">
+  <div class="data">
+    <p id="weather"></p>
+    <p id="max"></p>
+    <p id="min"></p>
+    <p id="humidity"></p>
+    <p id="wind"></p>
+  </div>
+</div>
+<div id="rightContainer" class="imgContainer">
+  <img id="skyline" src="assets/images/exe.jpg" alt="">
+  <img id="landmark" src="assets/images/exe.jpg" alt="">
+  <img id="food" src="assets/images/exe.jpg" alt="">
+  <img id="environment" src="assets/images/exe.jpg" alt="">
+  <img id="history" src="assets/images/exe.jpg" alt="">
+</div>
+</main>
 
-    <script src="assets/js/globe.js"></script>
+<script src="assets/js/globe.js"></script>
 </body>
 </html>

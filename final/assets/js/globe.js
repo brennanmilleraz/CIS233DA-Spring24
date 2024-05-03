@@ -4,7 +4,10 @@ function changeCity(citySelect) {
 
     document.getElementById("leftContainer").classList.remove("leftShow");
     document.getElementById("rightContainer").classList.remove("rightShow");
-
+    if(currentCity == ""){
+        myGlobe.pointOfView({"lat": CITY_COORDINATES[city]["lat"], "lng": CITY_COORDINATES[city]["lng"], "altitude": 2},  4000);
+        return;
+    }
     if(city == currentCity){
         goToCity();
         return;
@@ -31,13 +34,16 @@ function getMidPoint(city1, city2){
     lat2 = toRadians(lat2);
     lon1 = toRadians(lon1);
 
+    //formula to calculate midpoint
     Bx = Math.cos(lat2) * Math.cos(dLon);
     By = Math.cos(lat2) * Math.sin(dLon);
     lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + Bx) * (Math.cos(lat1) + Bx) + By * By));
     lon3 = lon1 + Math.atan2(By, Math.cos(lat1) + Bx);
 
+    //convert back to degrees and adjust latidude for better view of arc
     resultLat = toDegrees(lat3)-20;
     resultLng = toDegrees(lon3);
+
     return {
       lat: resultLat,
       lng: resultLng,
@@ -61,7 +67,6 @@ function goToCity(){
 
     document.getElementById("leftContainer").classList.add("leftShow");
     document.getElementById("rightContainer").classList.add("rightShow");
-
 
     currentCity = city;
     myGlobe
@@ -142,6 +147,10 @@ function getImages(city){
 
     city = city.toLowerCase();
 
+    if (city == "new york city"){
+        city = "nyc";
+    }
+
     skyline.src = `assets/images/${city}Skyline.jpg`;
     food.src = `assets/images/${city}Food.jpg`;
     landmark.src = `assets/images/${city}Landmark.jpg`;
@@ -149,22 +158,27 @@ function getImages(city){
     environment.src = `assets/images/${city}Environment.jpg`;
 }
 
-//function that goes to phoinix after 2 seconds
-const delay = ms => new Promise(res => setTimeout(res, ms));
-const startPos = async () => {
-    await delay(2000);
-    goToCity();
-};
-
+//object to store city coordinates
 const CITY_COORDINATES = {
     "Phoenix":{"lat": 33.45, "lng": -112, "altitude": 1},
-    "NYC":{"lat": 40.73, "lng": -73.94, "altitude": 1},
+    "New York City":{"lat": 40.73, "lng": -73.94, "altitude": 1},
     "Dubai":{"lat": 25.20, "lng": 55.27, "altitude": 1},
     "London":{"lat": 51.51, "lng": 0.13, "altitude": 1},
     "Tokyo":{"lat": 35.68, "lng": 139.65, "altitude": 1},
 };
-var currentCity = "Phoenix";
+//variable to store the current selected city
+var currentCity = "";
+var notPhone = true;
+var height = window.innerHeight;
 
+//check if the device is a phone
+if(window.innerWidth <= 768){
+    notPhone = false;
+    height = height * 0.25;
+}
+
+
+//initialize globe object
 const myGlobe = Globe()
     (document.getElementById('globeViz'))
     .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
@@ -176,7 +190,11 @@ const myGlobe = Globe()
     .pointColor(() => 'white')
     .pointAltitude(.2)
     .pointRadius(0.1)
-    .pointsData([CITY_COORDINATES["Phoenix"], CITY_COORDINATES["NYC"], CITY_COORDINATES["Dubai"], CITY_COORDINATES["London"], CITY_COORDINATES["Tokyo"]])
+    .pointsData([CITY_COORDINATES["Phoenix"], CITY_COORDINATES["New York City"], CITY_COORDINATES["Dubai"], CITY_COORDINATES["London"], CITY_COORDINATES["Tokyo"]])
     .pointsMerge(true)
+    .height(height);
 
-startPos();
+myGlobe.controls().enabled = notPhone;
+myGlobe.controls().enableZoom = notPhone;
+
+

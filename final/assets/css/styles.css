@@ -45,7 +45,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 80vh;
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
     border-radius: 10px;
     transition: all 4s;
@@ -84,4 +84,30 @@ body {
     padding: 10px;
     background-color: white;
     border-radius: 10px;
+}
+@media (max-width: 768px) {
+    body{
+        overflow-y: scroll;
+    }
+    main{
+        background-color: black;
+    }
+    .selectContainer {
+        top: 5%;
+        position: static;
+    }
+    .selectContainer select {
+        width: 40vw;
+    }
+    .selectContainer button {
+        width: 20vw;
+    }
+    .weatherContainer, .imgContainer {
+        position: static;
+        width: 90vw;
+    }
+    .data {
+        width: 90%;
+    }
+    
 }
