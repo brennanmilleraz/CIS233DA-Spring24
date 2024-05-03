@@ -174,7 +174,7 @@ var height = window.innerHeight;
 //check if the device is a phone
 if(window.innerWidth <= 768){
     notPhone = false;
-    height = height * 0.25;
+    height = height * 0.40;
 }
 
 
