@@ -80,12 +80,23 @@ function getWeather(city){
         console.log(data);
         document.getElementById("cityName").innerText = data.name;
         document.getElementById("temp").innerText = data.main.temp + "°F";
-        document.getElementById("weather").innerText = data.weather[0].description;
-        document.getElementById("maxMin").innerText = "Max: " + data.main.temp_max + "°F" + " Min: " + data.main.temp_min + "°F";
+        document.getElementById("weather").innerText = "Weather: " + data.weather[0].description;
+        document.getElementById("max").innerText = "High: " + data.main.temp_max + "°F";
+        document.getElementById("min").innerText = "Low: " + data.main.temp_min + "°F";
         document.getElementById("humidity").innerText = "Humidity: " + data.main.humidity + "%";
         document.getElementById("wind").innerText = "Wind: " + data.wind.speed + " mph";
 
+        weatherStr = data.weather[0].icon
         icon = document.getElementById("icon");
+        if(weatherStr.slice(-1) == "n"){
+            document.getElementById("rightContainer").classList.add("nightBg");
+            document.getElementById("leftContainer").classList.add("nightBg");
+
+        } else {
+            document.getElementById("rightContainer").classList.remove("nightBg");
+            document.getElementById("leftContainer").classList.remove("nightBg");
+
+        }
 
         switch(data.weather[0].icon){
             case "01d":

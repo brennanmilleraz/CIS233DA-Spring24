@@ -35,6 +35,7 @@ body {
     border-bottom-right-radius: 10px;
 }
 .weatherContainer, .imgContainer {
+    color: white;
     left: -100%; 
     position: absolute; 
     top: 10%; 
@@ -43,12 +44,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
     height: 80vh;
     overflow: scroll;
     overflow-x: hidden;
     border-radius: 10px;
     transition: all 4s;
+    background-color: #2b3bff;
+    background-image: linear-gradient(#2b3bff, #00f2fe);
+    /* 4facfe */
+}
+.nightBg {
+    background-color: #0d2543;
+    background-image: linear-gradient(#0d2543, #4f7492);
+}
+.weatherContainer {
+    overflow: hidden;
 }
 .imgContainer {
     left: auto;
@@ -65,4 +75,13 @@ body {
 }
 .rightShow {
     right: 3vw;
+}
+.data {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
 }
