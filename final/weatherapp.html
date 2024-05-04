@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<main>
+<main id="main">
 <div class="selectContainer">
   <select id="citySelect" onchange="changeCity(this)">
     <option value="Phoenix">Phoenix</option>
@@ -19,17 +19,21 @@
     <option value="London">London</option>
     <option value="Tokyo">Tokyo</option>
   </select>
-  <button type="button" onclick="goToCity()">Go Here!</button>
+  <button id="goBtn" type="button" onclick="goToCity()">Go Here!</button>
 </div>
 <div id="globeViz"></div>
 <div id="leftContainer" class="weatherContainer">
   <p id="cityName"></p>
   <h1 id="temp"></h1>
-  <img id="icon" src="assets/icons/rainy-1.svg" alt="">
   <div class="data">
-    <p id="weather"></p>
-    <p id="max"></p>
-    <p id="min"></p>
+    <div>
+      <img id="icon" src="assets/icons/snowy-3.svg" alt="">
+      <p id="weather"></p>
+    </div>
+    <div>
+      <p id="max"></p>
+      <p id="min"></p>
+    </div>
     <p id="humidity"></p>
     <p id="wind"></p>
   </div>

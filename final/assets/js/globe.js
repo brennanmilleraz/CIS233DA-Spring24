@@ -93,14 +93,21 @@ function getWeather(city){
 
         weatherStr = data.weather[0].icon
         icon = document.getElementById("icon");
-        if(weatherStr.slice(-1) == "n"){
-            document.getElementById("rightContainer").classList.add("nightBg");
-            document.getElementById("leftContainer").classList.add("nightBg");
 
+        if (isPhone){
+            if(weatherStr.slice(-1) == "n"){
+                document.getElementById("main").classList.add("nightBg");
+            } else {
+                document.getElementById("main").classList.remove("nightBg");
+            }
         } else {
-            document.getElementById("rightContainer").classList.remove("nightBg");
-            document.getElementById("leftContainer").classList.remove("nightBg");
-
+            if(weatherStr.slice(-1) == "n"){
+                document.getElementById("rightContainer").classList.add("nightBg");
+                document.getElementById("leftContainer").classList.add("nightBg");
+            } else {
+                document.getElementById("rightContainer").classList.remove("nightBg");
+                document.getElementById("leftContainer").classList.remove("nightBg");
+            }
         }
 
         switch(data.weather[0].icon){
@@ -157,6 +164,11 @@ function getImages(city){
     history.src = `assets/images/${city}History.jpg`;
     environment.src = `assets/images/${city}Environment.jpg`;
 }
+function phoneGoBtn() {
+    city = document.getElementById("citySelect").value;
+    getWeather(city);
+    getImages(city);
+}
 
 //object to store city coordinates
 const CITY_COORDINATES = {
@@ -168,33 +180,31 @@ const CITY_COORDINATES = {
 };
 //variable to store the current selected city
 var currentCity = "";
-var notPhone = true;
-var height = window.innerHeight;
+var isPhone = false;
+var nightBg = false;
 
-//check if the device is a phone
-if(window.innerWidth <= 768){
-    notPhone = false;
-    height = height * 0.40;
+//check if the device is not a phone
+if(window.innerWidth >= 768){
+
+    //initialize globe object
+    globalThis.myGlobe = Globe()
+        (document.getElementById('globeViz'))
+        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
+        .backgroundColor('black')
+        .arcColor([`rgba(0, 255, 0, 1)`, `rgba(255, 0, 0, 1)`])
+        .arcDashLength(0.4)
+        .arcDashGap(0.1)
+        .arcDashAnimateTime(1500)
+        .pointColor(() => 'white')
+        .pointAltitude(.2)
+        .pointRadius(0.1)
+        .pointsData([CITY_COORDINATES["Phoenix"], CITY_COORDINATES["New York City"], CITY_COORDINATES["Dubai"], CITY_COORDINATES["London"], CITY_COORDINATES["Tokyo"]])
+        .pointsMerge(true);
+} else {
+    isPhone = true;
+    getWeather("Phoenix");
+    getImages("Phoenix");
+    document.getElementById("globeViz").style.display = "none";
+    document.getElementById('citySelect').setAttribute('onchange','');
+    document.getElementById('goBtn').setAttribute('onclick', 'phoneGoBtn()');
 }
-
-
-//initialize globe object
-const myGlobe = Globe()
-    (document.getElementById('globeViz'))
-    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
-    .backgroundColor('black')
-    .arcColor([`rgba(0, 255, 0, 1)`, `rgba(255, 0, 0, 1)`])
-    .arcDashLength(0.4)
-    .arcDashGap(0.1)
-    .arcDashAnimateTime(1500)
-    .pointColor(() => 'white')
-    .pointAltitude(.2)
-    .pointRadius(0.1)
-    .pointsData([CITY_COORDINATES["Phoenix"], CITY_COORDINATES["New York City"], CITY_COORDINATES["Dubai"], CITY_COORDINATES["London"], CITY_COORDINATES["Tokyo"]])
-    .pointsMerge(true)
-    .height(height);
-
-myGlobe.controls().enabled = notPhone;
-myGlobe.controls().enableZoom = notPhone;
-
-
