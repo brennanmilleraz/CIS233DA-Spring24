@@ -191,6 +191,7 @@ if(window.innerWidth >= 768){
         (document.getElementById('globeViz'))
         .globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
         .backgroundColor('black')
+        .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
         .arcColor([`rgba(0, 255, 0, 1)`, `rgba(255, 0, 0, 1)`])
         .arcDashLength(0.4)
         .arcDashGap(0.1)
