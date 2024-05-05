@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+*{
+    font-family: 'Oxygen', sans-serif;
+}
 body {
     margin: 0;
     overflow-x: hidden;
@@ -68,8 +72,45 @@ body {
     right: -100%; 
 }
 .weatherContainer h1 {
-    font-size: 4vh;
+    font-size: 8vh;
     margin-top: 0;
+}
+#cityName {
+    font-size: 3vh;
+    margin: 3vh;
+}
+.data {
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(3, 100px);
+    width: 80%;
+    height: calc(width);
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.weatherContainer p {
+    margin: 0;
+    text-align: center;
+}
+.blue {
+    color: #2b3bff;
+    font-weight: bold;
+}
+.weatherContainer .dataIcon {
+    width: 100%;
+    /* height: fit-content; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.weatherContainer .dataIcon img{
+    width: 50px;
+    height: 50px;
 }
 .imgContainer img {
     width: 90%;
@@ -83,18 +124,6 @@ body {
 }
 .rightShow {
     right: 3vw;
-}
-.data {
-    color: black;
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(2, 50%);
-    width: 80%;
-    height: calc(width);
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 @media (max-width: 768px) {
     body{
@@ -120,7 +149,7 @@ body {
     }
     .selectContainer button {
         width: 20vw;
-        background-color: navy;
+
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     }
