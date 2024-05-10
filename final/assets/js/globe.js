@@ -1,4 +1,4 @@
-//function to go to the midpoint between two cities
+//function to go to the midpoint between two cities and display an arc between them
 function changeCity(citySelect) {
     city = citySelect.value;
 
@@ -15,6 +15,7 @@ function changeCity(citySelect) {
     povCoords = getMidPoint(currentCity, city);
     console.log(povCoords);
 
+    //update globe to show arc between cities
     myGlobe
         .arcsData([{startLat: CITY_COORDINATES[currentCity].lat, startLng: CITY_COORDINATES[currentCity].lng, endLat: CITY_COORDINATES[city].lat, endLng: CITY_COORDINATES[city].lng}])
         .pointOfView(povCoords, 4000);
@@ -90,6 +91,7 @@ function getWeather(city){
         document.getElementById("min").innerText = data.main.temp_min + "°F";
         document.getElementById("humidity").innerText = data.main.humidity + "%";
         document.getElementById("wind").innerText = data.wind.speed + " mph";
+        document.getElementById("feels").innerText = data.main.feels_like + "°F";
 
         weatherStr = data.weather[0].icon
         icon = document.getElementById("icon");
